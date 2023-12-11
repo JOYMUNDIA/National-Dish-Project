@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL QUERIES</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+        <!--1st SQL query-->
+        <div class="blog-post" id="blur">
+            <a href="index.html#sql-queries">
+                <div class="close-btn">
+                    <img src="images/close_button.png" alt="close-btn">
+                  </div>
+            </a>
+            
+            <div class="blog-post__img">
+                <div class="zoomer" onclick="toggle()">
+                    <input type="checkbox">
+                    <span class="button"></span>
+                    <span class="label">
+                        <img src="images/zoom.png" alt="zoom">
+                    </span>
+                  </div>
+                <img src="images/continent_dish.png" alt="Continent_on_pan" id="sqlImg">
+            </div>
+            <button class="sql-code-button" onclick="codeOutput()">
+                Preview <br>Code Output &lt;/&gt;
+              </button>
+            <div class="blog-post__info">
+                <h1 class="blog-post__title">Top Ingredient by Continent</h1>
+                <p class="blog-post__text"><span class="DML"> with cte as ( </span><br>
+                    <span class="DML">&emsp; select</span>
+                    &nbsp; Continent,<br> 
+                    &emsp; &emsp; &emsp; &emsp; &nbsp; MainContent 
+                    <span class="DML">AS</span> 
+                    Continent_MainContent,<br> 
+                    &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp; <span class="DML">count(*) as</span> 
+                    Top_Ingredient_Count,<br>
+                    &emsp; &emsp; &emsp;&emsp; &nbsp;&nbsp;&nbsp;<span class="DML">dense_rank() over (partition by</span> 
+                    Continent 
+                    <span class="DML"><br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; &nbsp; order by count(*) <br> 
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; &emsp; desc) as</span> 
+                        rnk,<br>
+                    &emsp; &emsp;&emsp; &emsp;&emsp;<span class="DML">ROUND (</span><span class= "prefinal">(</span><br>
+                    <span class="squareBracket">[</span><span class="squareBracket2">]</span></p>
+                        <p class="blog-post__text bracket">
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &nbsp;<span class="divider div1"><span class="DML">Count(*)</span></span>&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp; &emsp;&nbsp; &emsp;<span class="op">*</span> 100<span class="prefinal">)</span>, 2<span class="DML">)</span><br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp;<span class="DML">SUM</span><span class= "nest1">(</span><span class="DML">Count(*)</span><span class= "nest1">)</span><span class="DML"> OVER <span class="p-nest">(</span>partition by</span> Continent
+                            <span class="p-nest">)</span>
+                        </p>
+                        <p class="blog-post__text">
+                            &emsp; &emsp; &emsp;&emsp; &nbsp;&nbsp; <span class="DML">AS</span> Percent_Continent_Total<br><br>
+                    <span class="DML">&emsp; from</span> country_region cr<br>
+                    <span class="DML">&emsp; inner join</span> country_national_dish cnd<br>
+                    <span class="DML">&emsp; on</span> cr.Country_ID <span class="DML">=</span> cnd.Country_ID<br>
+                    <span class="DML">&emsp; inner join</span> main_contents mc<br>
+                    <span class="DML">&emsp; on</span> cnd.Dishes_ID <span class="DML">=</span> mc.Dishes_ID<br><br>
+                    <span class="DML">&emsp; group by</span> Continent, MainContent <span class="DML">)</span> <br><br>
+        
+                    <span class="DML">SELECT</span>
+            Continent,<br>&emsp;&emsp;&emsp;&emsp; Continent_MainContent,<br>&emsp;&emsp;&emsp;&emsp; Top_Ingredient_Count,<br>&emsp;&emsp;&emsp;&emsp; Percent_Continent_Total<br>
+                    <span class="DML">FROM</span>
+            cte<br>
+                    <span class="DML">WHERE</span>
+            rnk = 1<br>
+                    <span class="DML">ORDER BY</span> Continent , Continent_MainContent<span class="DML">;</span></p>
+            </div>
+        </div>
+        <div id="model_popup">
+            <img class="query1" src="images/TopCont.png" alt="Model full size">
+            <a href="#" onclick="toggle()">
+                <img class="model_close" src="images/close_button.png" alt="close_button">
+            </a>
+        </div>
+        <!--End: 1st SQL query-->
+    <script src="script.js"></script>
+</body>
+</html>

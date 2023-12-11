@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL QUERIES</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <!--2nd SQL query-->
+    <div class="blog-post" id="blur">
+        <a href="index.html#sql-queries">
+            <div class="close-btn">
+                <img src="images/close_button.png" alt="close-btn">
+              </div>
+        </a>
+        <div class="blog-post__img">
+            <div class="zoomer" onclick="toggle()">
+                <input type="checkbox">
+                <span class="button"></span>
+                <span class="label">
+                    <img src="images/zoom.png" alt="zoom">
+                </span>
+              </div>
+            <img src="images/Ingredientspic.png" alt="pic of ingredients" id="sqlImg2">
+        </div>
+        <button class="sql-code-button" onclick="codeOutput2()">
+            Preview <br>Code Output &lt;/&gt;
+        </button>
+        <div class="blog-post__info">
+            <h1 class="blog-post__title">Top 7 Ingredients</h1>
+            <p class="blog-post__text"><span class="DML"> with cte as </span><span class="bracket"> (</span><br>
+                &emsp;<span class="DML">select</span> cont.MainContent <span class="DML">AS</span> Core_Ingredient,<br>&emsp;&nbsp;<span class="DML">&emsp; &emsp; &emsp; count(*) as</span> Ingredient_Count<br><br>
+                &emsp;<span class="DML">from</span> main_contents cont<br>
+                &emsp;<span class="DML">inner join</span> country_national_dish cnd<br>
+                &emsp;<span class="DML">on</span> cnd.Dishes_ID <span class="DML">=</span> cont.Dishes_ID<br><br>
+                &emsp;<span class="DML">group by</span> cont.MainContent<br>
+                &emsp;<span class="DML">order by</span> <span class="DML">count(*) DESC </span><span class="bracket">)</span><br><br>
+      
+                <span class="DML">SELECT</span> 
+          Core_Ingredient,<br> &emsp; &emsp;&emsp;&nbsp; &nbsp;Ingredient_Count,<br>
+            &emsp; &emsp;  <span class="DML">ROUND(</span><br>
+            <span class="squareBracket3">[</span><span class="squareBracket4">]</span></p>
+            <p class="blog-post__text bracket2">
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;<span class="divider div2">Ingredient_Count</span>&emsp; &emsp; &emsp;&emsp; &emsp; &emsp;&emsp; &emsp; &emsp;&emsp; &emsp; &emsp;&emsp; &emsp; &emsp;&emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &nbsp; &emsp; &nbsp;&nbsp;&nbsp;<span class="op">*</span> 100, 0<span class="DML">)</span>&nbsp;<span class="DML">AS</span> Percentage<br>
+                &emsp; &emsp;<span class="DML">SELECT SUM(</span>Ingredient_Count) <span class="DML">AS</span> TOTAL <span class="DML">
+                FROM</span> cte)
+            </p>
+            <p class="blog-post__text"><br>
+                <span class="DML">FROM</span>
+          cte<br>
+                <span class="DML">group by</span> Core_Ingredient<br>
+                <span class="DML">ORDER BY</span> Percentage <span class="DML">desc</span><br>
+                <span class="DML">limit</span> 7;
+            </p>
+            
+        </div>
+    </div>
+    <div id="model_popup">
+        <img class="query2" src="images/Top7Ingred.png" alt="Model full size">
+        <a href="#" onclick="toggle()">
+            <img class="model_close" src="images/close_button.png" alt="close_button">
+        </a>
+    </div>
+    <!--End: 2nd SQL query-->
+    <script src="script.js"></script>
+</body>
+</html>
