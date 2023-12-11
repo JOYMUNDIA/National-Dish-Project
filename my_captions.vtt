@@ -1,0 +1,278 @@
+WEBVTT - Made with VTT Creator
+
+00:00.000 --> 00:03.981 position:50% align:end
+We hit the jackpot during our data mining expedition
+
+00:03.981 --> 00:10.799 position:50% align:middle
+but the gold we found was not without impurities 
+
+00:10.799 --> 00:17.000 position:50% align:middle
+The accuracy of our data
+
+00:17.104 --> 00:20.962 position:50% align:middle
+relies heavily on how well we refine it.
+
+00:20.962 --> 00:23.001 position:50% align:middle
+The more we clean and polish our data, 
+
+00:23.896 --> 00:26.890 position:50% align:middle
+the greater the level of accuracy we can achieve. 
+
+00:26.890 --> 00:31.784 position:50% align:middle
+And with that, we step into our data cleaning operation.
+
+
+00:31.784 --> 00:36.828 position:50% align:middle
+The impurities in the data include:
+
+00:36.828 --> 00:40.822 position:50% align:middle
+Familiar data being Alien
+
+00:40.822 --> 00:45.363 position:50% align:middle
+Data that violated regulations
+
+00:45.363 --> 00:48.750 position:50% align:middle
+Islandic data
+
+00:48.750 --> 00:52.033 position:50% align:middle
+Conflicting data
+
+00:52.033 --> 00:56.778 position:50% align:middle
+And Threatening scope creep
+
+00:56.778 --> 01:01.062 position:50% align:middle
+To kick things off, 
+
+01:01.062 --> 01:03.472 position:50% align:middle
+we have our first hurdle 
+
+01:03.472 --> 01:08.136 position:50% align:middle
+Familiar data being Alien. 
+
+01:08.136 --> 01:20.527 position:50% align:middle
+Let's delve into the data we've extracted
+
+01:20.527 --> 01:30.166 position:50% align:middle
+By honing in on these two tables. 
+
+01:30.166 --> 01:35.847 position:50% align:middle
+we'll discover they both have a country column in common.
+
+01:36.847 --> 01:44.043 position:50% align:middle
+Upon closer examination, 
+
+01:44.043 --> 01:49.828 position:50% align:middle
+the countries that should be well-known in both tables seem strangely unfamiliar. 
+
+01:49.828 --> 01:51.572 position:50% align:middle
+But how is this possible? 
+
+01:51.572 --> 01:59.734 position:50% align:middle
+It turns out that one country is referred to by a completely different name in the other table.
+
+
+02:03.911 --> 02:06.603 position:50% align:middle
+To swiftly resolve the issue at hand, 
+
+02:06.603 --> 02:10.426 position:50% align:middle
+we utilized Excel's vlookup function. 
+
+02:10.426 --> 02:13.916 position:50% align:middle
+By designating one table as the standard, 
+
+02:13.916 --> 02:16.768 position:50% align:middle
+the other table was examined for any matches.
+
+02:16.768 --> 02:25.575 position:50% align:middle
+Any countries that did not have a match were manually edited to align with the country names in the standard table.
+
+02:25.575 --> 02:33.342 position:50% align:middle
+A quick re-run of the function would confirm if the cleaning process was complete.
+
+03:31.927 --> 03:34.480 position:50% align:middle
+In our ongoing data examination, 
+
+03:34.480 --> 03:37.145 position:50% align:middle
+we uncovered a criminal data impurity. 
+
+03:37.145 --> 03:40.882 position:50% align:middle
+According to the regulations of Data normalization,
+
+03:40.882 --> 03:42.620 position:50% align:middle
+subsection first normal form,
+
+03:42.620 --> 03:48.541 position:50% align:middle
+a table ought to contain attributes or columns with atomic values.
+
+03:54.158 --> 03:55.169 position:50% align:middle
+In simple terms, 
+
+03:55.169 --> 03:58.164 position:50% align:middle
+one value per cell, 
+
+03:58.164 --> 04:02.728 position:50% align:middle
+not two not three, 
+
+04:02.728 --> 04:05.744 position:50% align:middle
+just one.
+
+04:05.744 --> 04:13.657 position:50% align:middle
+Our main contents table breached this regulation.
+
+04:24.000 --> 04:36.349 position:50% align:middle
+The resolution for this offense involved employing Python code to split the multi-value cells into separate single-value cells.
+
+
+04:47.000 --> 04:51.482 position:50% align:middle
+At present, our raw data is entirely isolated,
+
+04:51.482 --> 04:57.571 position:50% align:middle
+requiring us to devise a solution for establishing a connection between the tables.
+
+04:57.571 --> 05:03.526 position:50% align:middle
+Without a means of linking the life expectancy and main contents table,
+
+05:03.526 --> 05:10.456 position:50% align:middle
+it becomes impossible to ascertain whether individuals from countries with white meat-based dishes
+
+05:10.456 --> 05:16.962 position:50% align:middle
+enjoy a longer life expectancy than those from countries with red meat-based dishes.
+
+
+05:20.520 --> 05:26.000 position:50% align:middle
+The solution closely resembles the one we previously discussed. 
+
+05:26.000 --> 05:29.996 position:50% align:middle
+By leveraging Excel's VLOOKUP function, 
+
+05:29.996 --> 05:39.607 position:50% align:middle
+we can seamlessly incorporate ID columns into other tables by referring to a reference table. 
+
+05:39.608 --> 05:43.862 position:50% align:middle
+Although this method is highly effective for smaller datasets,
+
+05:43.862 --> 05:52.519 position:50% align:middle
+it's recommended to explore alternative solutions for larger datasets to ensure efficient processing.
+
+
+05:52.519 --> 05:57.007 position:50% align:middle
+Demonstrating the solution using the “main contents” table;
+
+05:57.007 --> 06:04.696 position:50% align:middle
+we start by copying the unique values of the national dish column to a new table called Dishes. 
+
+06:04.696 --> 06:12.593 position:50% align:middle
+We then create an ID column in the dishes table and assign an ID value to each national dish.
+
+
+06:14.820 --> 06:18.893 position:50% align:middle
+Setting the dishes table as the reference table, 
+
+06:18.893 --> 06:25.024 position:50% align:middle
+we add the ID values to the main contents table.
+
+
+07:27.250 --> 07:30.162 position:50% align:middle
+The updated table bears this appearance. 
+
+07:30.162 --> 07:37.415 position:50% align:middle
+It is now safe to drop the National Dish column as the ID column is sufficient.
+
+07:43.960 --> 07:46.398 position:50% align:middle
+Tailoring the solution to each table, 
+
+07:46.398 --> 07:52.851 position:50% align:middle
+we not only get data that can now be linked but can also communicate a universal message.
+
+
+08:03.530 --> 08:07.818 position:50% align:middle
+The last pair of impurities we stumbled upon were intimately 
+
+08:07.818 --> 08:10.783 position:50% align:middle
+intertwined, originating from a shared source. 
+
+08:15.230 --> 08:18.141 position:50% align:middle
+Throughout our data mining expedition, 
+
+08:18.141 --> 08:21.668 position:50% align:middle
+we amassed data from many websites.
+
+08:21.668 --> 08:28.424 position:50% align:middle
+Two of which housed the numerous countries with their respective national cuisines.
+
+
+08:56.780 --> 09:04.803 position:50% align:middle
+These two houses were at loggerheads and their data was laced with the last two impurities.
+
+
+09:09.813 --> 09:10.709 position:50% align:middle
+In a nutshell, 
+
+09:11.134 --> 09:17.618 position:50% align:middle
+the data sourced from website 1 stands out as the primary offender.
+
+
+09:22.568 --> 09:27.331 position:50% align:middle
+Both datasets 1 and 2 include countries that overlap. 
+
+
+09:40.456 --> 09:51.778 position:50% align:middle
+However, , it's quite intriguing to observe that certain nations in Dataset 1 have dissimilar national dishes listed in comparison to Dataset 2.
+
+
+09:51.778 --> 10:00.477 position:50% align:middle
+To prevent the project from going down a rabbit hole, 
+
+10:00.477 --> 10:04.852 position:50% align:middle
+only one dish was allowed to be designated as the national dish. 
+
+10:04.852 --> 10:15.000 position:50% align:middle
+Dataset 1 breached this scope, resulting in certain countries having more than one dish listed as their national dish.
+
+
+10:22.470 --> 10:24.996 position:50% align:middle
+To cleanse out both of these impurities, 
+
+10:24.996 --> 10:37.588 position:50% align:middle
+Dataset 2 was chosen as the authoritative dataset, incorporating only the countries from Dataset 1 that were absent in Dataset 2.
+
+
+10:44.203 --> 10:49.648 position:50% align:middle
+For the countries from Dataset 1 that were missing in Dataset 2 
+
+10:49.648 --> 10:53.944 position:50% align:middle
+and brought along the burden of scope creep, 
+
+10:53.944 --> 10:58.479 position:50% align:middle
+a meticulous process of manual trimming was carried out. 
+
+10:58.479 --> 11:08.336 position:50% align:middle
+This involved replacing the multiple dishes with a single dish carefully selected through thorough research and human judgment. 
+
+11:34.560 --> 11:40.208 position:50% align:middle
+Now that we've wrapped up the cleaning process and eliminated all impurities from our data, 
+
+11:40.208 --> 11:44.111 position:50% align:middle
+it is vital to secure an appropriate storage solution. 
+
+11:44.111 --> 11:50.772 position:50% align:middle
+This is crucial to avoid any additional contamination that could jeopardize the precision of our analysis.
+
+
+11:55.130 --> 12:00.710 position:50% align:middle
+And thus, we move forward to the next phase: the data modelling operation.
+
+
+12:03.595 --> 12:07.573 position:50% align:middle
+We are grateful for the time you have invested in this endeavour.
+
+12:07.573 --> 12:11.600 position:50% align:middle
+If you need access to the code used for the data cleaning process,
+
+12:11.617 --> 12:14.143 position:50% align:middle
+please consult the Jupyter notebooks provided below. 
+
+12:14.143 --> 12:16.291 position:50% align:middle
+Thank You!
+
+
